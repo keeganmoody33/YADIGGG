@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "version": 1
+  },
+  "board": {
+    "design_settings": {
+      "rules": {
+        "min_track_width": 0.12,
+        "min_via_diameter": 0.4,
+        "min_via_drill": 0.2,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1,
+        "min_clearance": 0.12
+      }
+    },
+    "layer_stackup": {
+      "layers": [
+        {
+          "type": "copper",
+          "name": "F.Cu",
+          "thickness": 0.035,
+          "description": "Top component signal routing layer"
+        },
+        {
+          "type": "dielectric",
+          "name": "Prepreg",
+          "thickness": 0.1,
+          "material": "FR4",
+          "epsilon_r": 4.2
+        },
+        {
+          "type": "copper",
+          "name": "In1.Cu",
+          "thickness": 0.035,
+          "description": "Internal 1 solid ground plane (split digital/analog)"
+        },
+        {
+          "type": "dielectric",
+          "name": "Core",
+          "thickness": 0.8,
+          "material": "FR4",
+          "epsilon_r": 4.5
+        },
+        {
+          "type": "copper",
+          "name": "In2.Cu",
+          "thickness": 0.035,
+          "description": "Internal 2 power plane grid"
+        },
+        {
+          "type": "dielectric",
+          "name": "Prepreg2",
+          "thickness": 0.1,
+          "material": "FR4",
+          "epsilon_r": 4.2
+        },
+        {
+          "type": "copper",
+          "name": "B.Cu",
+          "thickness": 0.035,
+          "description": "Bottom low-speed signal and quiet audio analog routing layer"
+        }
+      ]
+    }
+  },
+  "schematic": {
+    "meta": {
+      "version": 1
+    }
+  }
+}

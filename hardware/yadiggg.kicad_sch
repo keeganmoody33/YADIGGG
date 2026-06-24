@@ -1,0 +1,66 @@
+(kicad_sch (version 20211123) (generator eeschema)
+
+  (paper "A3")
+
+  (title_block
+    (title "yadiggg Companion: Master Hierarchical Schematic")
+    (company "yadiggg Engineering Suite")
+    (rev "V1.0")
+    (date "Friday, June 5, 2026")
+  )
+
+  # Sheet 1: Power & Battery Management
+  (sheet (at 20 40) (size 60 40) (fields_autoplaced)
+    (uuid "sheet-power-uuid")
+    (property "Name" "Power & Battery Management" (id 0) (at 20 38 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+    (property "File" "yadiggg_power.kicad_sch" (id 1) (at 20 82 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+  )
+
+  # Sheet 2: Core Processing & Storage (i.MX 8M Nano)
+  (sheet (at 100 40) (size 60 40) (fields_autoplaced)
+    (uuid "sheet-core-uuid")
+    (property "Name" "Core Processing & Storage" (id 0) (at 100 38 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+    (property "File" "yadiggg_core.kicad_sch" (id 1) (at 100 82 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+  )
+
+  # Sheet 3: High-Fidelity Audio & Mics
+  (sheet (at 20 100) (size 60 40) (fields_autoplaced)
+    (uuid "sheet-audio-uuid")
+    (property "Name" "High-Fidelity Audio & Capture" (id 0) (at 20 98 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+    (property "File" "yadiggg_audio.kicad_sch" (id 1) (at 20 142 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+  )
+
+  # Sheet 4: Displays, Interfaces, and Haptics
+  (sheet (at 100 100) (size 60 40) (fields_autoplaced)
+    (uuid "sheet-interface-uuid")
+    (property "Name" "Displays, Interfaces & Haptics" (id 0) (at 100 98 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+    (property "File" "yadiggg_interface.kicad_sch" (id 1) (at 100 142 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+  )
+
+  # Sheet 5: Wireless Sync RF Module
+  (sheet (at 60 160) (size 60 40) (fields_autoplaced)
+    (uuid "sheet-wireless-uuid")
+    (property "Name" "Wireless RF Module" (id 0) (at 60 158 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+    (property "File" "yadiggg_wireless.kicad_sch" (id 1) (at 60 202 0)
+      (effects (font (size 1.5 1.5) (thickness 0.3)) (justify left))
+    )
+  )
+)

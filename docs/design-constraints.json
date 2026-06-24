@@ -1,0 +1,63 @@
+{
+  "project": "yadiggg",
+  "version": "1.0",
+  "stage": "schematic",
+  "power": {
+    "topology": "PMIC_LDO_hybrid",
+    "rails": [
+      {
+        "name": "VBAT",
+        "voltage": 3.7,
+        "source": "Li-Ion Battery (1500mAh)"
+      },
+      {
+        "name": "VCC_5V",
+        "voltage": 5.0,
+        "source": "USB-C Input"
+      },
+      {
+        "name": "VCC_3V3",
+        "voltage": 3.3,
+        "source": "BD71850MWV BUCK1 / LDO"
+      },
+      {
+        "name": "V_VDD_ARM",
+        "voltage": 0.85,
+        "source": "BD71850MWV BUCK2 (A53 Core)"
+      },
+      {
+        "name": "V_VDD_DRAM",
+        "voltage": 1.1,
+        "source": "BD71850MWV BUCK3 (LPDDR4)"
+      },
+      {
+        "name": "V_VDD_SOC",
+        "voltage": 0.85,
+        "source": "BD71850MWV BUCK4 (SoC Logic)"
+      },
+      {
+        "name": "V_ANA_DAC",
+        "voltage": 3.3,
+        "source": "Ultra-Low-Noise LDO (LP5907)"
+      }
+    ]
+  },
+  "board": {
+    "layers": 4,
+    "thickness_mm": 1.2,
+    "impedance_matching": {
+      "LPDDR4_bus": "40_ohm_single_80_ohm_diff",
+      "USB_data": "90_ohm_diff",
+      "RF_antenna": "50_ohm_single"
+    }
+  },
+  "thermal": {
+    "budget_mw": 2500,
+    "max_operating_temp_C": 85
+  },
+  "dfmTargets": {
+    "assembly": "Atlanta Sourcing Quick-Turn",
+    "min_pitch_mm": 0.4,
+    "min_passive_package": "0402"
+  }
+}

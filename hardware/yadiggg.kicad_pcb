@@ -1,0 +1,66 @@
+(kicad_pcb (version 20211014) (generator pcbnew)
+
+  (general
+    (thickness 1.2)
+  )
+
+  (paper "A4")
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" power)
+    (2 "In2.Cu" power)
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user "B.Adhesive")
+    (33 "F.Adhes" user "F.Adhesive")
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user "B.Silkscreen")
+    (37 "F.SilkS" user "F.Silkscreen")
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user "User.Drawings")
+    (41 "Cmts.User" user "Comments")
+    (42 "Eco1.User" user "Eco1")
+    (43 "Eco2.User" user "Eco2")
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user "B.Courtyard")
+    (47 "F.CrtYd" user "F.Courtyard")
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+
+  (setup
+    (pad_to_mask_clearance 0.05)
+    (pcb_text_size 1.5 1.5)
+    (pcb_text_thickness 0.3)
+    (pad_size 1.5 1.5)
+    (pad_drill 0.8)
+  )
+
+  # Closed Edge.Cuts Outline: Rounded Rectangle (100mm x 55mm) with a 6mm Corner Fillet
+  # Top straight segment
+  (gr_line (start 106 100) (end 194 100) (layer "Edge.Cuts") (width 0.1) (tstamp "outline-top"))
+  # Top-Right corner arc (centered at 194, 106; arc from (194, 100) to (200, 106))
+  (gr_arc (start 194 106) (mid 198.243 101.757) (end 200 106) (layer "Edge.Cuts") (width 0.1) (tstamp "outline-tr-arc"))
+  # Right straight segment
+  (gr_line (start 200 106) (end 200 149) (layer "Edge.Cuts") (width 0.1) (tstamp "outline-right"))
+  # Bottom-Right corner arc (centered at 194, 149; arc from (200, 149) to (194, 155))
+  (gr_arc (start 194 149) (mid 198.243 153.243) (end 194 155) (layer "Edge.Cuts") (width 0.1) (tstamp "outline-br-arc"))
+  # Bottom straight segment
+  (gr_line (start 194 155) (end 106 155) (layer "Edge.Cuts") (width 0.1) (tstamp "outline-bottom"))
+  # Bottom-Left corner arc (centered at 106, 149; arc from (106, 155) to (100, 149))
+  (gr_arc (start 106 149) (mid 101.757 153.243) (end 100 149) (layer "Edge.Cuts") (width 0.1) (tstamp "outline-bl-arc"))
+  # Left straight segment
+  (gr_line (start 100 149) (end 100 106) (layer "Edge.Cuts") (width 0.1) (tstamp "outline-left"))
+  # Top-Left corner arc (centered at 106, 106; arc from (100, 106) to (106, 100))
+  (gr_arc (start 106 106) (mid 101.757 101.757) (end 106 100) (layer "Edge.Cuts") (width 0.1) (tstamp "outline-tl-arc"))
+
+  # Ground Planes Split Isolation Markers (Visual aid on User.Comments layer)
+  (gr_line (start 160 100) (end 160 155) (layer "Cmts.User") (width 0.15) (tstamp "gnd-split-comment"))
+  (gr_text "1.0mm split plane split: GND_DIG to the Left / GND_ANA to the Right" (at 150 127.5 90) (layer "Cmts.User")
+    (effects (font (size 1.2 1.2) (thickness 0.2)))
+    (tstamp "gnd-split-text")
+  )
+)
