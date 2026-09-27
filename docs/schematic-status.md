@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: PCBA V1 Schematic Design and Status Report"
 project: yadiggg
-status: completed
+status: scaffold
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:

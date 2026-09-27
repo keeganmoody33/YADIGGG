@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: MIMX8MN4DVTJZAA Pinmux Assignment Spec"
 project: yadiggg
-status: completed
+status: active-draft
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:
@@ -11,7 +11,7 @@ backlinks:
 
 # yadiggg: MIMX8MN4DVTJZAA Pinmux Assignment Spec
 **Date of Document**: Friday, June 5, 2026
-**Status**: Release V1.0 (Production Blueprint)
+**Status**: Active Draft (requires verification against official NXP pin tables before schematic capture)
 **Target Silicon**: NXP i.MX 8M Nano Quad-Core SoC (486-pin BGA) & NXP LPC55S69 (Cortex-M33) Co-Processor
 
 This specification defines the exact physical pins, multiplexed functions (ALT modes), and signal routings for the **yadiggg PCBA V1**. It guarantees complete hardware-level compatibility between our high-performance A53-based Linux cores, the real-time Cortex-M33 co-processor core, and our specialized visual/audio peripherals.

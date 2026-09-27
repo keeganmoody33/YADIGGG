@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: Brand Identity and Design Guidelines"
 project: yadiggg
-status: completed
+status: active-draft
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:

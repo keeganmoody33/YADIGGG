@@ -276,9 +276,17 @@ Do not treat the current KiCad board outline as final. Before real routing:
 9. Update board outline and component keepout zones in KiCad.
 10. Only then begin placement/routing.
 
+## Canonical V1 Visual Lock
+
+Use this as the controlling visual statement for new renders, placement sketches, and tech-pack updates:
+
+> yadiggg is a compact, portrait-first, 105mm x 60mm x 15mm-class pocket field recorder for vinyl crate digging, with a smoke-clear translucent polycarbonate shell, large monochrome Sharp Memory LCD on the upper front face, one durable amber/orange side thumb control, visible but restrained dark internal electronics, USB-C bottom port, optional 3.5mm jack if fit allows, tiny acoustic mic ports, and a provisional rear OCR/macro camera aperture. No keypad, no Crate IQ branding, no bulky walkie-talkie silhouette, no generic spade logo, and no production-ready claims.
+
+This statement supersedes inconsistent prior renderings as visual direction, but it does **not** make the industrial design production-ready. Dimensions, port placement, control mechanism, camera feasibility, mic placement, battery, antenna, jack fit, and KiCad constraints still require engineering validation.
+
 ## Provisional V1 Physical Assumptions
 
-These assumptions come from the latest user review and are captured in [[docs/adr/0011-provisional-v1-physical-direction-assumptions]]. They are **provisional working assumptions**, not final industrial-design lock.
+These assumptions come from the latest user review, [[physical-design/visual-consistency-audit]], and [[docs/adr/0011-provisional-v1-physical-direction-assumptions]]. They are **provisional working assumptions**, not final industrial-design lock.
 
 | Decision | Current direction | Tradeoff / fallback |
 |---|---|---|

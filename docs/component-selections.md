@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: Component Selections and Sourcing Map"
 project: yadiggg
-status: completed
+status: active-draft
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:

@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: Yocto Embedded Linux Custom Layer & Image Build Manual"
 project: yadiggg
-status: completed
+status: active-draft
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:
@@ -11,7 +11,7 @@ backlinks:
 
 # yadiggg: Yocto Embedded Linux Custom Layer & Image Build Manual
 **Date of Document**: Friday, June 5, 2026
-**Status**: Release V1.0 (Production Build System Spec)
+**Status**: Active Draft / Build Scaffold (requires verified BitBake image build)
 **Target Layer**: `meta-yadiggg` (Custom Application & System BSP Overlay)
 
 This document maps out the creation and configuration of **`meta-yadiggg`**, our custom Yocto metadata layer. It packages our high-performance C-based Sonic ID capture daemon, ALSA configurations, and offline databases directly into a monolithic, read-only Yocto Linux kernel image (`yadiggg-image.bb`) optimized to boot on the NXP i.MX 8M Nano in under **1.8 seconds**.

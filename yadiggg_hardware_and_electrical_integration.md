@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: Hardware and Electrical Integration"
 project: yadiggg
-status: completed
+status: active-draft
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:
@@ -55,7 +55,7 @@ The physical **yadiggg** board is designed around a single, high-density 4-layer
 
 ## 2. Resolutions of Critical Hardware Misalignments
 
-Our exhaustive technical audit identified four high-risk electrical and mechanical gaps. This section outlines the finalized engineering resolutions to render the board production-ready.
+Our exhaustive technical audit identified four high-risk electrical and mechanical gaps. This section outlines provisional engineering resolutions that must be reconciled against BOM-current, physical placement, datasheets, and real schematic capture before the board can be considered production-ready.
 
 ### 2.1 The DAC/ADC Audio Input Resolution
 *   **The Original Mismatch**: The *Sonic ID Spec* erroneously stated that the playback DAC (ESS ES9218PC) would be "configured in Line-In mode" to record audio from the 3.5mm aux port for acoustic fingerprinting. 

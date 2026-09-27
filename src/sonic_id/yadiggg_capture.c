@@ -51,9 +51,9 @@ int capture_pcm_audio(int16_t *buffer, size_t total_samples) {
         float signal = sinf(2.0f * M_PI * 440.0f * t); // 440Hz A-note tone
         
         // Add realistic vinyl crackle pops (ambient warehouse fuzzer)
-        float noise = ((float)rand() / RAND_MAX - 0.5f) * 0.05f;
+        float noise = ((float)rand() / (float)RAND_MAX - 0.5f) * 0.05f;
         if (rand() % 10000 == 0) {
-            noise += ((float)rand() / RAND_MAX > 0.5f) ? 0.8f : -0.8f; // pop!
+            noise += ((float)rand() / (float)RAND_MAX > 0.5f) ? 0.8f : -0.8f; // pop!
         }
         
         float composite = (signal * 0.4f + noise) * 32767.0f;

@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: Sonic ID (OLAF Fingerprint Port) & PDM Capture Driver Specification"
 project: yadiggg
-status: completed
+status: active-draft
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:
@@ -11,7 +11,7 @@ backlinks:
 
 # yadiggg: Sonic ID (OLAF Fingerprint Port) & PDM Capture Driver Specification
 **Date of Document**: Friday, June 5, 2026
-**Status**: Release V1.0 (Production Software Architecture)
+**Status**: Active Draft / Prototype Architecture (requires fixtures, reference fingerprints, and target ALSA validation)
 **Target Platform**: NXP i.MX 8M Nano (Quad Cortex-A53 @ 1.4GHz) running Yocto Embedded Linux (Kernel 5.15-rt)
 
 This specification defines the software, firmware, and signal-processing architecture for **Sonic ID**—the offline acoustic music fingerprinting engine of **yadiggg**. It documents the low-level PDM capture driver configurations, ALSA routing, our custom C port of the OLAF (Offline Lightweight Audio Fingerprinting) DSP engine, and its high-performance relational database matching pipeline.

@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: Strategic Decision Map and Roadmap"
 project: yadiggg
-status: completed
+status: reference
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:

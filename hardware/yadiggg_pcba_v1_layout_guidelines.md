@@ -1,7 +1,7 @@
 ---
 title: "yadiggg: 4-Layer PCBA V1 Physical Layout & Routing Guidelines"
 project: yadiggg
-status: completed
+status: active-draft
 type: system_specification
 tags: [yadiggg, system_engineering, modular_design]
 backlinks:
