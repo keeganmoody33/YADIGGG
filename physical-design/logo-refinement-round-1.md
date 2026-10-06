@@ -105,13 +105,19 @@ Recommendation: Use as **wordmark/system reference**, but inject more Route 1 ch
 
 ## User Direction
 
-The user selected **Route 3: Technical Wordmark Lockup** as the preferred direction to continue refining.
+The user now prefers the **combined expressive shovel-speaker icon + technical wordmark direction**.
+
+Current preferred reference:
+
+- `media-output/img-muvo7mgq-aeae663b.png`
+- User direction: simplify the speaker interior / use less speaker detail.
+- Composition: expressive Route 2-style shovel/speaker energy with Route 3-style clean technical `yadiggg` wordmark, now with a simpler red/orange speaker-cone shape for better small-size readability.
 
 ## Recommended Direction
 
-Refine **Route 3** as the primary logo direction. Preserve its clean technical wordmark, small-scale legibility, cream/dark contrast, and compact icon-to-wordmark relationship.
+Refine the **combined direction** as the primary logo route. Preserve the expressive oversized shovel-speaker head, orange shovel handle, red speaker-cone interior, green upward-right wave energy, and clean technical `yadiggg` wordmark.
 
-Borrow only selective character from Route 1: slightly more expressive shovel-speaker geometry and a clearer red speaker focal point. Avoid making Route 2 the master logo, but keep its energy as a marketing/sticker variant.
+Next refinements should not restart the logo system. They should only tune the icon geometry: make the shovel head less shield-like, clarify the open speaker mouth, and preserve waves traveling up/right from the speaker cone.
 
 ## Next Refinement Prompt
 

@@ -1,102 +1,156 @@
 # yadiggg
 
-> *The record is the hero — yadiggg is merely a transparent lens that reveals its history.*
+![yadiggg logo](assets/brand/yadiggg-logo-current.png)
 
-**yadiggg** is a pocketable, offline-first physical companion device for vinyl crate diggers. A dedicated, purpose-built gadget — the size of a voice recorder — that you pull out at a record fair or dusty basement shop to instantly decode any record you're holding.
+> A compact smoke-clear pocket field recorder for vinyl crate digging.
 
-No phone. No internet. No Shazam. No Discogs subscription required.
+**yadiggg** is a purpose-built hardware companion for people digging through records in shops, fairs, basements, collections, and back rooms. It is designed as a pocketable field recorder / record intelligence device: fast to grab, distraction-free, and visually rooted in vinyl culture.
 
----
+The current V1 direction is a compact portrait-first device with a translucent shell, monochrome waveform display, one amber side control, restrained visible internals, and a shovel-speaker brand mark.
 
-## The Problem
-
-Every vinyl digger knows the pain:
-
-- **You can't read the label** — tiny 6pt credits in a dim basement
-- **The record has no tracklist** — private press, white label, mystery groove
-- **Your phone is a distraction** — one Discogs search turns into 45 minutes of Instagram
-- **The listening station has a line** — you're flying blind on a $40 blind buy
-
-yadiggg kills all four of these problems with a single gesture.
+![yadiggg studio hero render](assets/product/yadiggg-studio-hero.png)
 
 ---
 
-## The Core Loop: Aim → Scan → Reveal
+## Current V1 Direction
 
-1. **AIM** — Point the rear 13MP pinhole camera at a vinyl center label or matrix run-out (10–15cm away)
-2. **SCAN** — Hold the physical Orange Button. Sub-100ms autofocus. Haptic tap confirms capture.
-3. **REVEAL** — The 2.7" Sharp Memory LCD pops the metadata payload in under **1.5 seconds**:
-   - Artist, producer, session musicians, studio location
-   - Sample lineage and copyright flags
-   - Label, catalog number, year
+**Product identity:** `yadiggg`  
+**Category:** pocket field recorder / crate-digging assistant  
+**Form factor:** compact portrait-first handheld device  
+**Envelope target:** 105mm x 60mm x 15mm-class, provisional  
+**Visual language:** smoke-clear translucent hardware, monochrome waveform UI, amber/orange side control, visible but restrained dark internals
 
-No boot screen. No loading spinner. Just facts.
+Current visual lock:
+
+> yadiggg is a compact, portrait-first, 105mm x 60mm x 15mm-class pocket field recorder for vinyl crate digging, with a smoke-clear translucent polycarbonate shell, large monochrome Sharp Memory LCD on the upper front face, one durable amber/orange side thumb control, visible but restrained dark internal electronics, USB-C bottom port, optional 3.5mm jack if fit allows, tiny acoustic mic ports, and a provisional rear OCR/macro camera aperture.
+
+Non-goals for the V1 visual direction:
+
+- no keypad
+- no Crate IQ branding
+- no bulky walkie-talkie silhouette
+- no generic spade/record logo
+- no production-ready or fabrication-ready claims until CAD, BOM, schematic, and prototype validation are complete
 
 ---
 
-## Hardware
+## Product Visuals
 
-| Component | Details |
+### Orthographic render sheet
+
+![yadiggg orthographic render sheet](assets/product/yadiggg-orthographic-sheet.png)
+
+Use this image as the current visual bridge between product concept and mechanical discussion. It shows the front, back, side-control side, and bottom port edge in one consistent design language.
+
+### Exploded stack concept
+
+![yadiggg exploded stack render](assets/product/yadiggg-exploded-stack.png)
+
+This is a conceptual/provisional internal stack render. It communicates assembly intent, but it is not a verified PCB layout, BOM, or production mechanical design.
+
+### Lifestyle context
+
+![yadiggg crate digging lifestyle render](assets/product/yadiggg-lifestyle-crate-digging.png)
+
+The product is intended to feel natural in a one-handed crate-digging workflow: record in one hand, yadiggg in the other, no phone required.
+
+---
+
+## Brand Direction
+
+![yadiggg current logo](assets/brand/yadiggg-logo-current.png)
+
+The current logo direction combines:
+
+- a shovel/speaker hybrid mark
+- an orange handle
+- a simplified red/orange speaker cone
+- green upward-right sound-wave energy
+- a clean technical lowercase `yadiggg` wordmark
+
+The logo is still an image-generation concept and needs a real vector package before production use.
+
+Planned logo deliverables:
+
+- full-color master
+- one-color dark version
+- one-color light version
+- icon-only mark
+- horizontal lockup
+- stacked lockup
+- small-size / shell-etch-safe version
+
+---
+
+## What This Repo Contains
+
+```text
+assets/                # Current public-facing product and logo visuals
+physical-design/       # Product source of truth, CAD brief, render protocol, logo notes
+hardware/              # KiCad project scaffolds and hardware notes
+src/sonic_id/          # Sonic ID / audio fingerprinting prototype code
+yocto-meta/            # Yocto layer scaffold
+docs/                  # ADRs, project-state handoff, BOM/component notes
+CONTEXT.md             # Master domain context and glossary
+README.md              # Public project overview
+```
+
+### Primary source-of-truth documents
+
+Start here:
+
+- [Final Product Source of Truth](physical-design/final-product-source-of-truth.md)
+- [Project State](docs/project-state.md)
+- [Render Consistency Protocol](physical-design/render-consistency-protocol.md)
+- [Placement Sketch](physical-design/placement-sketch.md)
+- [CAD Block Model Brief](physical-design/cad-block-model-brief.md)
+- [Logo Refinement Notes](physical-design/logo-refinement-round-1.md)
+- [ADRs](docs/adr/)
+
+---
+
+## Development Status
+
+This project is in **active design and prototyping**.
+
+Current status:
+
+| Area | Status |
 |---|---|
-| **Main SoC** | NXP i.MX 8M Nano — Quad ARM Cortex-A53, Yocto Linux |
-| **Co-Processor** | NXP LPC55S69 — Dual Cortex-M33, instant-on display & haptics |
-| **Display** | Sharp LS027B7DH01 — 2.7" reflective memory LCD (400×240, 1-bit) |
-| **DAC** | ESS ES9218PC SABRE — 32-bit quad headphone DAC, 3.5mm jack |
-| **Microphones** | Dual Knowles SPH0641LM4H-1 MEMS PDM microphone array |
-| **Storage** | 32GB eMMC — 50,000 pre-loaded 30-second audio previews |
+| Visual identity | coherent V1 direction selected |
+| Product renders | current concept set selected |
+| CAD | block-model brief + OpenSCAD starter drafted |
+| PCB / KiCad | scaffold/reference only, not fabrication-ready |
+| BOM | needs reconciliation into `docs/bom-current.md` |
+| Sonic ID | prototype C code, requires hardware validation |
+| Yocto | layer scaffold, not verified on target hardware |
+| Manufacturing | not ready |
+
+Important caveat:
+
+> Current visuals are design intent. They are not production CAD, not verified mechanical drawings, and not validated electrical layouts.
 
 ---
 
-## Intelligence (All Offline)
+## Engineering Path Forward
 
-### Sonic ID — Acoustic Fingerprinting
-When a label is too worn or torn to read, hold yadiggg near a playing record. The **OLAF DSP Engine** fingerprints the audio — 2048-point FFT, 32 logarithmic sub-bands, XNOR-popcount sliding correlation — against a local SQLite database. No Shazam API. No cell service. No cloud.
+Near-term work:
 
-### Basement Scanner — OCR
-Tesseract OCR resolves wrapped vinyl spines, barcodes, and catalog numbers even in low-light basement conditions.
-
-### On-Device Database
-1,000,000+ record index stored locally. Updates happen over USB-C from a companion desktop client. That's it.
-
----
-
-## The Philosophy
-
-In a world where every gadget competes for your attention, yadiggg deliberately does **one thing**. No social feed, no algorithm, no recommendations. Just objective, structured facts about the record in your hand.
-
-The design is informed directly by watching real vinyl diggers at work — the squinting at back-cover credits, the private press mystery, the smartphone distraction spiral, the turntable queue. yadiggg is the tool that should have existed for decades.
+1. Convert the current logo into a real vector package.
+2. Open/recreate the CAD block model from `physical-design/cad/yadiggg_v1_block_model.scad`.
+3. Export measured front/back/side/bottom CAD views.
+4. Decide whether the rear OCR/macro camera and optional 3.5mm jack stay.
+5. Create `docs/bom-current.md`.
+6. Choose the cloud EDA path: Flux.ai or EasyEDA Pro.
+7. Rebuild schematic and PCB constraints from the source-of-truth docs.
+8. Export a neutral prototype manufacturing package only after CAD/BOM/EDA validation.
 
 ---
 
-## What's In This Repo
+## Philosophy
 
-```
-src/                  # Sonic ID OLAF fingerprint engine (C)
-hardware/             # KiCad schematic & PCB layout scaffolds
-yocto-meta/           # meta-yadiggg custom Yocto Linux layer
-docs/                 # ADRs, component selections, schematic status
-physical-design/      # Enclosure direction brief
-yadiggg_schema.sql    # SQLite intelligence graph schema
-CONTEXT.md            # Master domain glossary & architecture decisions
-```
+The record is the hero. yadiggg should be a transparent, purpose-built lens for revealing what is already inside the music: sound, history, metadata, context, and memory.
 
-### Key Documents
-- [Product & Interaction Architecture](yadiggg_product_and_interaction_architecture.md)
-- [Hardware & Electrical Integration](yadiggg_hardware_and_electrical_integration.md)
-- [Firmware & Update Architecture](yadiggg_firmware_and_update_architecture.md)
-- [Intelligence Graph & Schema](yadiggg_intelligence_graph_and_schema.md)
-- [Brand Identity & Design Guidelines](yadiggg_brand_identity_and_design_guidelines.md)
-- [Strategic Roadmap](yadiggg_strategic_decision_map_and_roadmap.md)
-- [Adversarial Testing Protocol](yadiggg_adversarial_testing_and_validation_protocol.md)
+No phone spiral. No social feed. No generic gadget sludge.
 
----
-
-## Current Status
-
-yadiggg is in active design and prototyping. Physical form factor not yet locked. KiCad schematics are scaffolds. BOM reconciliation in progress. Sonic ID requires hardware ALSA validation on target. Every major decision is tracked as an ADR in [`docs/adr/`](docs/adr/).
-
-This is a serious product being built seriously.
-
----
-
-*Built for the diggers.*
+Just a sharp little tool for diggers.
