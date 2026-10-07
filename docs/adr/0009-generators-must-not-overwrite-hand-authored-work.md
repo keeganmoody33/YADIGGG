@@ -4,10 +4,6 @@ project: yadiggg
 status: accepted
 type: architecture_decision
 tags: [yadiggg, adr, generators, workflow]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[scripts/generate_kicad_project]]"
-  - "[[scripts/connect_obsidian_vault]]"
 ---
 
 # ADR-0009: Generators Must Not Overwrite Hand-Authored Work
@@ -22,5 +18,5 @@ Scripts in `scripts/` generated KiCad files and mass-injected Obsidian metadata.
 Generator scripts must be treated as bootstrap or migration tools. Before reuse, they must be made idempotent and safe against overwriting hand-authored files.
 
 ## Consequences
-- Do not rerun `scripts/generate_kicad_project.py` after KiCad editing starts unless it gains backup/dry-run protection.
-- Do not rerun `scripts/connect_obsidian_vault.py` until it is improved to preserve status, aliases, and custom metadata.
+- `scripts/generate_kicad_project.py` refuses to overwrite existing files unless `--force` is explicitly supplied; it remains a scaffold generator, not an engineering validator.
+- The destructive `scripts/connect_obsidian_vault.py` and hard-coded layer deployer were removed. The read-only `scripts/validate_yocto_layer.py` checks the checked-in recipe without writing files.

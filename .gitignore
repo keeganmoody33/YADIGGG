@@ -7,13 +7,18 @@
 .DS_Store
 .obsidian/
 .history/
+__pycache__/
+*.py[cod]
 
 # C build artifacts
 *.o
-src/sonic_id/yadiggg_capture
+yadiggg_capture
 
 # Generated image/editor caches
-image_generate/*cache*.json
+/image_generate/*cache*.json
 
-# Packaged migration/archive exports
-*.zip
+# KiCad local project/editor state, not design source
+*.kicad_prl
+
+# Local build outputs
+/build/

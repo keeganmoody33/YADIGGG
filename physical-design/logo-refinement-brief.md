@@ -4,27 +4,24 @@ project: yadiggg
 status: active-draft
 type: brand_identity_brief
 tags: [yadiggg, logo, brand-identity, visual-consistency]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[docs/project-state]]"
-  - "[[yadiggg_brand_identity_and_design_guidelines]]"
-  - "[[physical-design/render-consistency-protocol]]"
 ---
 
 # yadiggg Logo Refinement Brief
 
+This remains a logo exploration brief, not an approved identity package. The current logo image is concept art; the vector, one-color, etch-safe, and production artwork remain open.
+
 ## Purpose
 
-This brief defines the direction for refining the yadiggg logo so it supports the locked physical product direction instead of drifting into unrelated merch, packaging, or generic record-store iconography.
+This brief records earlier logo exploration in relation to the current product concept. It does not define an approved identity or lock physical-product details.
 
 ## Source Materials Reviewed
 
 | Asset | Observed content | Role |
 |---|---|---|
-| `IMG_3581_converted.png` | Hand-drawn notebook sketch with rough black mark, red shovel/speaker head, green wave/energy strokes, handwritten `yadiggg.xyz` | Primary conceptual source |
-| `yadigggsketch_rendered.png` | Cropped/cleaned version of the same sketch; large diagonal handle, red triangular/conical head, sweeping green/black wave marks | Primary conceptual source |
-| `Ab0366a7e4d1c4f86ba5eb0a115a0dd80k.png` | Polished orange-on-black graphic with record circle, shovel/needle shape, and `yadiggg` wordmark | Reference-only / partially rejected |
-| `yadiggg_brand_identity_and_design_guidelines.md` | Defines the intended metaphor: shovel digging downward, speaker cone in the shovel head, neon soundwave arcs, compact geometric wordmark | Active design requirement |
+| `../assets/reference/IMG_3581_converted.png` | Hand-drawn notebook sketch with rough black mark, red shovel/speaker head, green wave/energy strokes, handwritten `yadiggg.xyz` | Concept reference only |
+| `../assets/reference/yadigggsketch_rendered.png` | Cropped/cleaned sketch with diagonal handle, red cone, and green/black wave marks | Concept reference only; the source PDF is not present |
+| `../assets/reference/Ab0366a7e4d1c4f86ba5eb0a115a0dd80k.png` | Polished orange-on-black graphic with record circle, shovel/needle shape, and `yadiggg` wordmark | Historical reference, not approved |
+| `../archive/historical-proposals/yadiggg_brand_identity_and_design_guidelines.md` | Earlier brand direction proposal | Historical proposal, not an active requirement |
 
 ## Core Logo Metaphor
 
@@ -44,7 +41,7 @@ It should work at two distances:
 - Audio/speaker metaphor.
 - Vinyl/record/crate-digging culture.
 - Raw underground energy, but cleaned into a usable hardware brand mark.
-- Compatibility with the locked product CMF: smoke-clear shell, dark internals, amber/orange control, monochrome display.
+- Visual compatibility with the current concept: smoke-clear appearance, dark internals, amber side-control appearance, and monochrome display concept.
 
 ## What Must Change
 

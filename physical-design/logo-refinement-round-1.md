@@ -4,13 +4,11 @@ project: yadiggg
 status: active-draft
 type: brand_identity_review
 tags: [yadiggg, logo, brand-identity, visual-review]
-backlinks:
-  - "[[physical-design/logo-refinement-brief]]"
-  - "[[yadiggg_brand_identity_and_design_guidelines]]"
-  - "[[physical-design/render-consistency-protocol]]"
 ---
 
 # yadiggg Logo Refinement Round 1
+
+These are exploration notes only. No logo route, vector artwork, or production identity is approved.
 
 ## Purpose
 
@@ -28,7 +26,7 @@ Core idea:
 
 ### Route 1: Hardware Badge Mark
 
-File: `media-output/img-mujspg9r-88019fbf.png`
+File: `../assets/brand/reference/img-mujspg9r-88019fbf.png`
 
 Observed result:
 
@@ -55,7 +53,7 @@ Recommendation: **Primary route to refine.**
 
 ### Route 2: Underground Signal Mark
 
-File: `media-output/img-mujspi8y-83e51195.png`
+File: `../assets/brand/reference/img-mujspi8y-83e51195.png`
 
 Observed result:
 
@@ -80,7 +78,7 @@ Recommendation: Keep as **expressive secondary/marketing route**, not primary ha
 
 ### Route 3: Technical Wordmark Lockup
 
-File: `media-output/img-mujspgo1-16f6e9df.png`
+File: `../assets/brand/reference/img-mujspgo1-16f6e9df.png`
 
 Observed result:
 
@@ -107,11 +105,12 @@ Recommendation: Use as **wordmark/system reference**, but inject more Route 1 ch
 
 The user now prefers the **combined expressive shovel-speaker icon + technical wordmark direction**.
 
-Current preferred reference:
+Earlier notes reported the following as a preferred direction:
 
-- `media-output/img-muvo7mgq-aeae663b.png`
 - User direction: simplify the speaker interior / use less speaker detail.
 - Composition: expressive Route 2-style shovel/speaker energy with Route 3-style clean technical `yadiggg` wordmark, now with a simpler red/orange speaker-cone shape for better small-size readability.
+
+The referenced `img-muvo7mgq-aeae663b.png` file is not present in the tracked assets and has not been replaced with another image.
 
 ## Recommended Direction
 

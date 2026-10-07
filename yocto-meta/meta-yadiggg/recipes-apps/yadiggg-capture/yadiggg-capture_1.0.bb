@@ -1,16 +1,12 @@
-# meta-yadiggg/recipes-apps/yadiggg-capture/yadiggg-capture_1.0.bb
-SUMMARY = "yadiggg Sonic ID PDM Capture & Offline Matching Daemon"
-DESCRIPTION = "Cross-compiles the OLAF DSP engine and links with ALSA/SQLite3 for offline record lookups."
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+SUMMARY = "yadiggg experimental audio-capture prototype"
+DESCRIPTION = "Unvalidated prototype capture application; not a production firmware image."
+LICENSE = "CLOSED"
 
-# Build dependencies
 DEPENDS = "alsa-lib sqlite3"
+RDEPENDS:${PN} = "alsa-lib sqlite3"
 
-# Runtime dependencies
-RDEPENDS:${PN} = "libasound sqlite3"
-
-# Source files fetched from local work directories
+# Keep the repository's native source as the only maintained copy.
+FILESEXTRAPATHS:prepend := "${THISDIR}/../../../../src/sonic_id:"
 SRC_URI = " \
     file://yadiggg_capture.c \
     file://olaf.c \
@@ -22,27 +18,22 @@ SRC_URI = " \
 
 S = "${WORKDIR}"
 
-# Use Poky's autotools or plain make configurations
 inherit update-rc.d
 
 INITSCRIPT_NAME = "yadiggg-init"
 INITSCRIPT_PARAMS = "defaults 30"
 
 do_compile() {
-    # Trigger our custom multi-platform cross-compiling Makefile
-    oe_runmake -f Makefile TARGET=yadiggg_capture
+    oe_runmake -f Makefile
 }
 
 do_install() {
-    # 1. Install compiled C-daemon straight into /usr/bin/
     install -d ${D}${bindir}
     install -m 0755 yadiggg_capture ${D}${bindir}/yadiggg_capture
 
-    # 2. Install ALSA asound.conf configuration directly to /etc/
     install -d ${D}${sysconfdir}
     install -m 0644 asound.conf ${D}${sysconfdir}/asound.conf
 
-    # 3. Install SysVinit startup scripts directly to /etc/init.d/
     install -d ${D}${sysconfdir}/init.d
     install -m 0755 yadiggg-init ${D}${sysconfdir}/init.d/yadiggg-init
 }

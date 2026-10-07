@@ -2,7 +2,7 @@
  * @file yadiggg_capture.c
  * @brief Low-level Audio Capture & SQLite Fingerprint Matching Daemon
  * @date Friday, June 5, 2026
- * @status Production Release V1.0 (Dual-Platform Darwin Mock & Yocto ALSA Native)
+ * @status Experimental prototype (synthetic Darwin input and unvalidated Linux ALSA path)
  * 
  * This program implements the real-time audio capture loop for yadiggg. It:
  * 1. Initializes the local ALSA interface (or CoreAudio mock if on macOS).
@@ -149,7 +149,7 @@ int search_database_fingerprint(const olaf_fingerprint_t *query, olaf_match_resu
     }
 
     float max_score = 0.0f;
-    strcpy(best_match->track_id, "NONE_FOUND");
+    snprintf(best_match->track_id, sizeof(best_match->track_id), "%s", "NONE_FOUND");
     best_match->confidence = 0.0f;
     best_match->offset_sec = 0;
 
@@ -176,7 +176,9 @@ int search_database_fingerprint(const olaf_fingerprint_t *query, olaf_match_resu
 
             if (confidence > max_score) {
                 max_score = confidence;
-                strncpy(best_match->track_id, track_id, sizeof(best_match->track_id) - 1);
+                if (track_id != NULL) {
+                    snprintf(best_match->track_id, sizeof(best_match->track_id), "%s", track_id);
+                }
                 best_match->confidence = confidence;
                 best_match->offset_sec = offset;
             }

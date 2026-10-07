@@ -13,10 +13,19 @@ structure for "yadiggg" on disk. It writes:
 4. Individual hierarchical sub-sheets for Power, Core, Audio, Interfaces, and Wireless.
 """
 
+import argparse
 import os
 import json
+from pathlib import Path
 
-HARDWARE_DIR = "/Users/keeganmoody/Downloads/YADIGGG/hardware"
+HARDWARE_DIR = Path(__file__).resolve().parents[1] / "hardware"
+FORCE_OVERWRITE = False
+
+
+def write_generated_file(path, content):
+    mode = "w" if FORCE_OVERWRITE else "x"
+    with open(path, mode, encoding="utf-8") as file:
+        file.write(content)
 
 def ensure_hardware_dir():
     os.makedirs(HARDWARE_DIR, exist_ok=True)
@@ -96,8 +105,7 @@ def generate_kicad_pro():
     }
     
     file_path = os.path.join(HARDWARE_DIR, "yadiggg.kicad_pro")
-    with open(file_path, "w") as f:
-        json.dump(project_data, f, indent=2)
+    write_generated_file(file_path, json.dumps(project_data, indent=2))
     print(f"[GENERATOR] Created KiCad project file: {file_path}")
 
 def generate_kicad_pcb():
@@ -178,8 +186,7 @@ def generate_kicad_pcb():
 )
 """
     file_path = os.path.join(HARDWARE_DIR, "yadiggg.kicad_pcb")
-    with open(file_path, "w") as f:
-        f.write(pcb_content)
+    write_generated_file(file_path, pcb_content)
     print(f"[GENERATOR] Created KiCad board layout: {file_path}")
 
 def generate_kicad_sch_sheets():
@@ -253,8 +260,7 @@ def generate_kicad_sch_sheets():
 )
 """
     master_path = os.path.join(HARDWARE_DIR, "yadiggg.kicad_sch")
-    with open(master_path, "w") as f:
-        f.write(master_content)
+    write_generated_file(master_path, master_content)
     print(f"[GENERATOR] Created master KiCad schematic: {master_path}")
 
     # Generate the dummy empty sub-sheets so they can be opened immediately by KiCad
@@ -278,19 +284,44 @@ def generate_kicad_sch_sheets():
 )
 """
         sub_path = os.path.join(HARDWARE_DIR, filename)
-        with open(sub_path, "w") as f:
-            f.write(sub_content)
+        write_generated_file(sub_path, sub_content)
         print(f"[GENERATOR] Instantiated sub-sheet: {sub_path}")
 
 def main():
+    global HARDWARE_DIR, FORCE_OVERWRITE
+    parser = argparse.ArgumentParser(description="Create a KiCad bootstrap scaffold; this does not produce manufacturing data.")
+    parser.add_argument("--output-dir", type=Path, default=HARDWARE_DIR)
+    parser.add_argument("--force", action="store_true", help="explicitly allow replacing generated target files")
+    args = parser.parse_args()
+
+    HARDWARE_DIR = args.output_dir.resolve()
+    FORCE_OVERWRITE = args.force
+    generated_names = [
+        "yadiggg.kicad_pro",
+        "yadiggg.kicad_pcb",
+        "yadiggg.kicad_sch",
+        "yadiggg_power.kicad_sch",
+        "yadiggg_core.kicad_sch",
+        "yadiggg_audio.kicad_sch",
+        "yadiggg_interface.kicad_sch",
+        "yadiggg_wireless.kicad_sch",
+    ]
+    existing = [name for name in generated_names if (HARDWARE_DIR / name).exists()]
+    if existing and not FORCE_OVERWRITE:
+        parser.error(
+            "refusing to overwrite existing project files: "
+            + ", ".join(existing)
+            + "; use --output-dir for a new scaffold or --force to replace explicitly"
+        )
+
     print("==================================================")
-    print("🚀  KICAD V7 DESIGN TEMPLATE GENERATION DAEMON")
+    print("KiCad bootstrap scaffold generator (not manufacturing data)")
     print("==================================================")
     ensure_hardware_dir()
     generate_kicad_pro()
     generate_kicad_pcb()
     generate_kicad_sch_sheets()
-    print("\n🎉 Success! KiCad Project initiated successfully in /hardware/ directory.")
+    print(f"\nScaffold written to {HARDWARE_DIR}; schematic/PCB validation is still required.")
 
 if __name__ == "__main__":
     main()

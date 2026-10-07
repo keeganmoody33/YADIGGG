@@ -1,134 +1,23 @@
----
-title: "Project State"
-project: yadiggg
-status: authoritative
-type: handoff_state
-tags: [yadiggg, project-state, handoff, obsidian]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[yadiggg_vault_overview]]"
-  - "[[docs/workspace-cleanup-audit]]"
-  - "[[docs/adr/0001-source-of-truth-and-archive-policy]]"
-  - "[[docs/adr/0010-context-and-adr-are-required-handoff-nodes]]"
----
+# Engineering readiness register
 
-# yadiggg Project State
+**Release state:** engineering review / prototype planning only. **Production release is not authorized.** Every row below remains open; a document or populated template is not evidence that engineering work or approval has occurred.
 
-## Purpose
+This register is the single authoritative view of release blockers. Product intent is defined in the [product specification](../physical-design/final-product-source-of-truth.md); supplier instructions and artifact locations are in the [manufacturer handoff](../manufacturing/handoff.md).
 
-This is the **single live status table** for the yadiggg workspace. Start here when entering the project from Obsidian or a new chat session.
+| Workstream | Status | Evidence in this repository | Closure evidence required | Required role(s) |
+|---|---|---|---|---|
+| Electrical design, schematic, ERC | Open | `hardware/yadiggg.kicad_sch` and its sheets are empty scaffolds; [schematic status](schematic-status.md) | Complete reviewed schematic with actual symbols, connectivity, selected components, ERC results, and disposition of every error/warning | Electrical design engineer; independent reviewer |
+| PCB layout, DRC, fabricator review | Open | `hardware/yadiggg.kicad_pcb` is an incomplete outline/scaffold; [historical layout proposal](../archive/historical-proposals/yadiggg_pcba_v1_layout_guidelines.md) is not evidence of completed routing | Routed board tied to the released schematic/BOM, DRC report and approved exceptions, stack-up/constraints, and fabricator DFM acceptance | PCB layout engineer; fabricator |
+| Enclosure geometry and fit | Open | `physical-design/cad/yadiggg_v1_block_model.scad` is a provisional block model; concept images are not drawings | Dimensioned CAD with component fit/clearance, control/port/camera decisions, material and process, tolerances, assembly interfaces, and reviewed physical prototype evidence | Mechanical/industrial design engineer; prototype reviewer |
+| BOM and substitutions | Open | [`draft-bom.csv`](../manufacturing/draft-bom.csv) transcribes conflicting, unverified proposals | One revision-controlled BOM reconciled to schematic/layout, verified MPN/package/lifecycle/source, approved alternates, quantities, and engineering approval | Electrical/BOM engineer; sourcing reviewer |
+| Fabrication and assembly outputs | Open | No released Gerbers, drill files, pick-and-place, assembly drawings, or production CAD are present | Generated outputs from the reviewed design revision; independent output inspection and manufacturer acceptance | Electrical/PCB engineer; mechanical engineer; fabricator/CM |
+| Firmware, programming, recovery | Open | `src/sonic_id/` is experimental; `yocto-meta/meta-yadiggg/` is an unverified build scaffold | Reproducible target build tied to released hardware, programming instructions, boot/update/recovery procedure, and tested recovery evidence | Embedded software engineer; manufacturing test engineer |
+| Fixture, functional test, calibration | Open | No fixture, acceptance limits, calibration procedure, or test results are present | Test plan and fixture specification with measurable acceptance criteria, calibration method if needed, and recorded prototype verification | Test/validation engineer; manufacturing engineer |
+| Packaging and product marking | Open | No released packaging, labels, serial-number scheme, or marking artwork is present | Approved packaging/marking specification tied to product revision and traceability requirements | Product/packaging engineer; quality representative |
+| Safety and regulatory assessment | Open | No applicability assessment, test reports, certifications, or approvals are present | Qualified assessment identifies applicable markets/requirements; required test evidence and approvals are completed before release | Product safety/regulatory specialist; responsible engineering approver |
 
-This file answers:
+## Release decision
 
-1. What is current?
-2. What is only a scaffold or prototype?
-3. What is reference/archive material?
-4. What should happen next?
-5. Which ADR explains the decision?
+`production_release_eligible` is **false**. Do not manufacture production units, order from proposal prices, treat candidate parts as approved, or create/send fabricated outputs as released data. Engineering review may identify feasibility and DFM work only.
 
-## Status Vocabulary
-
-Use the statuses from [[docs/adr/0008-obsidian-metadata-must-reflect-status]]:
-
-| Status | Meaning |
-|---|---|
-| `authoritative` | Current source of truth for this area. |
-| `active-draft` | Useful and current, but still being refined. |
-| `scaffold` | Structure exists, but not real implementation/validation. |
-| `prototype` | Working exploration; not production validated. |
-| `reference` | Useful input, image, or background material. |
-| `superseded` | Replaced by newer files or decisions. |
-| `archive-candidate` | Likely should move out of the active vault after approval. |
-| `regenerable` | Build/cache/output artifact; recreate from source when needed. |
-
-## Source-of-Truth Spine
-
-| Deliverable | Status | Source / location | Decision record | Next action |
-|---|---:|---|---|---|
-| Domain language and handoff map | `authoritative` | [[CONTEXT]] | [[docs/adr/0010-context-and-adr-are-required-handoff-nodes]] | Keep updated whenever decisions change. |
-| Vault dashboard / MOC | `authoritative` | [[yadiggg_vault_overview]] | [[docs/adr/0001-source-of-truth-and-archive-policy]] | Keep links synced with this table. |
-| Cleanup audit | `active-draft` | [[docs/workspace-cleanup-audit]] | [[docs/adr/0001-source-of-truth-and-archive-policy]] | Use as basis for archive moves after user approval. |
-| ADR decision spine | `authoritative` | `docs/adr/*.md` | [[docs/adr/0001-source-of-truth-and-archive-policy]] | Add a new ADR for every material decision. |
-
-## Product and Brand Documents
-
-| Deliverable | Status | Source / location | Notes | Next action |
-|---|---:|---|---|---|
-| Final product source of truth | `authoritative` | [[physical-design/final-product-source-of-truth]] | Consolidates current product visuals, logo direction, CAD state, and next development path. | Use as the top-level design source before renders, CAD, logo, EDA, or marketing work. |
-| Brand identity | `active-draft` | [[yadiggg_brand_identity_and_design_guidelines]] | Strong visual direction, now subordinate to [[physical-design/final-product-source-of-truth]] for current V1 direction. | Reconcile CMF/logo variants into final brand package. |
-| Product interaction architecture | `active-draft` | [[yadiggg_product_and_interaction_architecture]] | Useful product logic and user flow. | Review after physical controls are placed. |
-| Strategic roadmap | `reference` | [[yadiggg_strategic_decision_map_and_roadmap]] | Useful history; contains older “formerly Crate IQ” framing. | Pull only still-current decisions into ADRs. |
-| Renderings and use cases | `reference` | [[yadiggg_renderings_and_use_cases]] | Not physical design truth. See ADR-0002. | Reclassify after [[physical-design/physical-direction-brief]] matures. |
-
-## Physical Design and Hardware
-
-| Deliverable | Status | Source / location | Decision record | Next action |
-|---|---:|---|---|---|
-| Physical direction | `active-draft` | [[physical-design/physical-direction-brief]] | [[docs/adr/0002-physical-design-direction-not-yet-locked]], [[docs/adr/0011-provisional-v1-physical-direction-assumptions]] | Convert provisional V1 assumptions into placement sketch, OCR/camera opportunity-cost matrix, control durability matrix, 3.5mm jack fit check, and KiCad keepout updates. |
-| Visual consistency audit | `active-draft` | [[physical-design/visual-consistency-audit]] | [[docs/adr/0011-provisional-v1-physical-direction-assumptions]] | Canonical visual lock: compact portrait-first 105mm x 60mm x 15mm-class smoke-clear pocket field recorder; use before generating images, placement sketches, or tech-pack updates. |
-| V1 placement sketch | `active-draft` | [[physical-design/placement-sketch]] | [[docs/adr/0011-provisional-v1-physical-direction-assumptions]] | Use as the mechanical/visual bridge before KiCad keepout updates; next create camera, control, jack, mic, and battery fit studies. |
-| CAD block model brief | `active-draft` | [[physical-design/cad-block-model-brief]], `physical-design/cad/yadiggg_v1_block_model.scad` | [[docs/adr/0011-provisional-v1-physical-direction-assumptions]] | Use as the finite CAD starting point; open in Onshape/Fusion/OpenSCAD-compatible workflow, then export STEP/STL and measured view renders. |
-| Render consistency protocol | `active-draft` | [[physical-design/render-consistency-protocol]] | [[physical-design/visual-consistency-audit]] | Use for every future AI render prompt, render set, Higgsfield still/video pass, and render acceptance review. |
-| Hardware/electrical integration | `active-draft` | [[yadiggg_hardware_and_electrical_integration]] | [[docs/adr/0007-component-bom-is-conflicted-and-needs-reconciliation]] | Reconcile against BOM and physical direction. |
-| Component selections / BOM map | `active-draft` | [[docs/component-selections]] | [[docs/adr/0007-component-bom-is-conflicted-and-needs-reconciliation]] | Create `docs/bom-current.md` before ordering. |
-| Design constraints JSON | `reference` | `docs/design-constraints.json` | [[docs/adr/0003-kicad-files-are-scaffold-not-fabrication-ready]] | Keep as input; convert into KiCad constraints later. |
-| Schematic status report | `scaffold` | [[docs/schematic-status]] | [[docs/adr/0003-kicad-files-are-scaffold-not-fabrication-ready]] | Rewrite after real schematic capture/ ERC. |
-| Pinmux spec | `active-draft` | [[hardware/yadiggg_pinmux]] | [[docs/adr/0007-component-bom-is-conflicted-and-needs-reconciliation]] | Verify against real NXP pin tables before schematic capture. |
-| Audio DAC and mic schematic notes | `active-draft` | [[hardware/yadiggg_audio_dac_and_mic_schematics]] | [[docs/adr/0005-sonic-id-code-is-sandbox-prototype]] | Verify with datasheets and BOM-current. |
-| PCB layout guidelines | `active-draft` | [[hardware/yadiggg_pcba_v1_layout_guidelines]] | [[docs/adr/0003-kicad-files-are-scaffold-not-fabrication-ready]] | Re-run after physical direction and BOM-current are locked. |
-
-## KiCad CAD Files
-
-| Deliverable | Status | Source / location | Decision record | Next action |
-|---|---:|---|---|---|
-| KiCad project shell | `scaffold` | `hardware/yadiggg.kicad_pro` | [[docs/adr/0003-kicad-files-are-scaffold-not-fabrication-ready]] | Open in KiCad 10, then begin real schematic capture. |
-| KiCad master schematic | `scaffold` | `hardware/yadiggg.kicad_sch` | [[docs/adr/0003-kicad-files-are-scaffold-not-fabrication-ready]] | Add real symbols, pins, nets, annotations. |
-| KiCad sub-sheets | `scaffold` | `hardware/yadiggg_*.kicad_sch` | [[docs/adr/0003-kicad-files-are-scaffold-not-fabrication-ready]] | Fill with real circuits only after BOM reconciliation. |
-| KiCad PCB file | `scaffold` | `hardware/yadiggg.kicad_pcb` | [[docs/adr/0003-kicad-files-are-scaffold-not-fabrication-ready]] | Treat board outline as provisional until physical direction locks. |
-| KiCad generator script | `scaffold` | `scripts/generate_kicad_project.py` | [[docs/adr/0009-generators-must-not-overwrite-hand-authored-work]] | Do not rerun after manual KiCad edits unless backup/dry-run is added. |
-
-## Firmware, OS, and Data
-
-| Deliverable | Status | Source / location | Decision record | Next action |
-|---|---:|---|---|---|
-| Firmware/update architecture | `active-draft` | [[yadiggg_firmware_and_update_architecture]] | [[docs/adr/0006-yocto-layer-is-build-scaffold]] | Validate boot claims against target board later. |
-| Yocto setup script | `scaffold` | `yadiggg_yocto_setup.sh` | [[docs/adr/0006-yocto-layer-is-build-scaffold]] | Run in real Yocto build env; capture build log. |
-| Yocto layer | `scaffold` | `yocto-meta/meta-yadiggg/` | [[docs/adr/0006-yocto-layer-is-build-scaffold]] | Build with BitBake before treating as verified. |
-| Yocto recipe guide | `active-draft` | [[hardware/yadiggg_yocto_recipe_and_image_build]] | [[docs/adr/0006-yocto-layer-is-build-scaffold]] | Update after successful image build. |
-| Database schema | `active-draft` | `yadiggg_schema.sql` | [[docs/adr/0005-sonic-id-code-is-sandbox-prototype]] | Separate seed/mock data from production schema. |
-| Local SQLite DB | `regenerable` | `yadiggg.db` | [[docs/adr/0005-sonic-id-code-is-sandbox-prototype]] | Regenerate from schema; do not hand-edit. |
-| Intelligence graph spec | `active-draft` | [[yadiggg_intelligence_graph_and_schema]] | [[docs/adr/0001-source-of-truth-and-archive-policy]] | Reconcile against current SQL schema. |
-| Adversarial validation protocol | `active-draft` | [[yadiggg_adversarial_testing_and_validation_protocol]] | [[docs/adr/0010-context-and-adr-are-required-handoff-nodes]] | Convert tests into executable validation checklist later. |
-
-## Sonic ID / Audio Code
-
-| Deliverable | Status | Source / location | Decision record | Next action |
-|---|---:|---|---|---|
-| Sonic ID architecture note | `active-draft` | [[hardware/yadiggg_sonic_id_and_olaf_port]] | [[docs/adr/0005-sonic-id-code-is-sandbox-prototype]] | Correct language that overstates production readiness. |
-| OLAF-like DSP code | `prototype` | `src/sonic_id/olaf.c`, `src/sonic_id/olaf.h` | [[docs/adr/0005-sonic-id-code-is-sandbox-prototype]] | Add fixtures, compare against known references, verify algorithm. |
-| Capture daemon | `prototype` | `src/sonic_id/yadiggg_capture.c` | [[docs/adr/0005-sonic-id-code-is-sandbox-prototype]] | Validate on target ALSA/PDM hardware. |
-| ALSA config | `active-draft` | `src/sonic_id/asound.conf` | [[docs/adr/0005-sonic-id-code-is-sandbox-prototype]] | Test on target kernel/audio card. |
-| Object files and binary | `regenerable` | `src/sonic_id/*.o`, `yadiggg_capture` | [[docs/adr/0001-source-of-truth-and-archive-policy]] | Move to build/cache or delete later. |
-
-## Archive / Reference Inputs
-
-| Deliverable | Status | Source / location | Decision record | Next action |
-|---|---:|---|---|---|
-| Crate IQ PDFs | `archive-candidate` | `Crate Iq *.pdf` | [[docs/adr/0004-crate-iq-files-are-archival-inputs]] | Move to `archive/source-inputs/` after approval. |
-| Duplicate Ya Diggg PDFs | `archive-candidate` | `Ya Diggg Advanced Specs (1).pdf`, `Ya Diggg Sonic Id Spec (1).pdf` | [[docs/adr/0004-crate-iq-files-are-archival-inputs]] | Remove duplicates after confirming originals. |
-| Failed OCR text | `archive-candidate` | `extracted_text/*.txt` | [[docs/adr/0004-crate-iq-files-are-archival-inputs]] | Archive or delete; most contain no useful text. |
-| Rendered page images | `reference` | `rendered_pages/*.png` | [[docs/adr/0002-physical-design-direction-not-yet-locked]] | Move to reference/archive after physical brief. |
-| Root image files | `reference` | `*.png`, `*.avif` | [[docs/adr/0002-physical-design-direction-not-yet-locked]] | Label with meaning or archive. |
-
-## Current Top Priorities
-
-1. **Create physical placement sketch** from [[physical-design/physical-direction-brief]] and [[docs/adr/0011-provisional-v1-physical-direction-assumptions]].
-2. **Run OCR/camera opportunity-cost matrix** before treating camera/OCR as locked.
-3. **Run control durability matrix** before choosing slider/button/rocker/wheel.
-4. **Reconcile BOM** into `docs/bom-current.md` before schematic capture or part ordering.
-5. **Convert KiCad scaffold into real schematic capture** only after physical direction and BOM-current are stable.
-6. **Clean archive/cache files** after user approves move plan.
-
-## Handoff Rule
-
-Before ending a future session, update this file if any deliverable changes status, if a new source-of-truth file appears, or if a decision is made that affects physical design, BOM, KiCad, firmware, Yocto, or Sonic ID.
+Reopen a row only when its closure evidence exists, is revision-linked, and has been reviewed by the required role. Update this register and the machine-readable release manifest together; production packaging must fail closed while any blocker remains open.

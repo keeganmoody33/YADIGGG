@@ -4,9 +4,6 @@ project: yadiggg
 status: accepted
 type: architecture_decision
 tags: [yadiggg, adr, handoff, context]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[yadiggg_vault_overview]]"
 ---
 
 # ADR-0010: CONTEXT and ADR Are Required Handoff Nodes

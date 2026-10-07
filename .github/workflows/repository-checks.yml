@@ -1,0 +1,27 @@
+name: Repository checks
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Run repository regression checks
+        run: python3 -m unittest discover -s tests -v
+      - name: Check Yocto source staging
+        run: python3 scripts/validate_yocto_layer.py
+      - name: Check synthetic-input C build
+        run: |
+          make -C src/sonic_id MOCK_CAPTURE=1
+          make -C src/sonic_id clean
+      - name: Check init script syntax
+        run: bash -n yocto-meta/meta-yadiggg/recipes-apps/yadiggg-capture/files/yadiggg-init

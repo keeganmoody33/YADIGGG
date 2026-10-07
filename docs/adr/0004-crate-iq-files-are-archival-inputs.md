@@ -4,9 +4,6 @@ project: yadiggg
 status: accepted
 type: architecture_decision
 tags: [yadiggg, adr, archive, crate-iq]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[yadiggg_strategic_decision_map_and_roadmap]]"
 ---
 
 # ADR-0004: Crate IQ Files Are Archival Inputs
@@ -22,11 +19,11 @@ Treat Crate IQ files as archival inputs, not active specifications.
 
 Recommended handling:
 
-- Keep the original PDFs in an archive/reference folder.
-- Keep rendered pages only if needed for visual review; otherwise mark as derived/cache.
-- Treat extracted text files with no OCR text as failed extraction artifacts and archive or delete later after user approval.
-- Promote any still-valid Crate IQ content into active yadiggg Markdown or ADRs before using it.
+- Preserve original PDFs under `archive/legacy-crate-iq/source-pdfs/` and page renders under `archive/rendered-pages/`.
+- Remove only generated failed-extraction text that contains no recovered text; retain the source PDFs.
+- Record moves and exact duplicate removals in `archive/README.md`.
+- Reassess any historical idea against the current product specification and readiness register before reusing it.
 
 ## Consequences
 - Current design decisions should cite active yadiggg docs/ADRs, not Crate IQ PDFs directly.
-- Obsidian Graph View should not use every Crate IQ render as an active node.
+- Archived Crate IQ files are provenance, not current requirements or approved design inputs.

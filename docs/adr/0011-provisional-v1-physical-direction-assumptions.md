@@ -4,11 +4,6 @@ project: yadiggg
 status: accepted
 type: architecture_decision
 tags: [yadiggg, adr, physical-design, v1, industrial-design]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[docs/project-state]]"
-  - "[[physical-design/physical-direction-brief]]"
-  - "[[docs/adr/0002-physical-design-direction-not-yet-locked]]"
 ---
 
 # ADR-0011: Provisional V1 Physical Direction Assumptions

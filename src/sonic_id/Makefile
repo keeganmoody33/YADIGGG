@@ -1,30 +1,28 @@
-# yadiggg: Sonic ID Capture and OLAF Matching Pipeline Makefile
-# Date: Friday, June 5, 2026
-# Status: Cross-Platform Build Automation V1.0
+# yadiggg Sonic ID prototype build.
 
-CC = gcc
-CFLAGS = -O3 -Wall -Wextra -ffast-math -std=c99 -I.
+CC ?= gcc
+CFLAGS ?= -O2
+CFLAGS += -Wall -Wextra -std=c99
+CPPFLAGS += -I.
+LDFLAGS ?=
+LDLIBS ?=
 TARGET = yadiggg_capture
+MOCK_CAPTURE ?= 0
 
-# Detect operating system
+# MOCK_CAPTURE exercises the synthetic-input path without claiming audio hardware support.
 UNAME_S := $(shell uname -s)
-UNAME_M := $(shell uname -m)
 
-# Conditional library and optimization flags based on Host Architecture
-ifeq ($(UNAME_S), Darwin)
-    # macOS Compilation (Emulated sandbox development mode)
-    LIBS = -lsqlite3 -lm
-    CFLAGS += -D__APPLE__
-    printf_arch = Host OS: macOS ($(UNAME_M)) -> Compiling Emulated Sandbox
+ifeq ($(MOCK_CAPTURE),1)
+    CPPFLAGS += -D__APPLE__
+    LDLIBS += -lsqlite3 -lm
+    printf_arch = synthetic-input prototype (no ALSA hardware)
+else ifeq ($(UNAME_S), Darwin)
+    CPPFLAGS += -D__APPLE__
+    LDLIBS += -lsqlite3 -lm
+    printf_arch = Darwin synthetic-input prototype
 else
-    # Embedded Yocto Linux or standard Linux PC Target
-    LIBS = -lasound -lsqlite3 -lm -lpthread
-    printf_arch = Host OS: Linux ($(UNAME_M)) -> Compiling Native ALSA Capture
-    
-    # Enable NEON Vectorization optimizations if compiling on ARM (Cortex-A53)
-    ifneq ($(filter arm% aarch64, $(UNAME_M)),)
-        CFLAGS += -march=armv8-a -mtune=cortex-a53 -mfpu=neon-fp-armv8 -mfloat-abi=hard
-    endif
+    LDLIBS += -lasound -lsqlite3 -lm -lpthread
+    printf_arch = Linux ALSA prototype (compiler/target selected by CC)
 endif
 
 SRCS = olaf.c yadiggg_capture.c
@@ -39,14 +37,14 @@ info:
 	@echo "=================================================="
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
-	@echo "🎉 Compilation complete! Executable generated: ./$(TARGET)"
+	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
+	@echo "Prototype executable generated: ./$@"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(TARGET)
-	@echo "🧹 Clean complete. Directory cleared."
+	@echo "Clean complete."
 
 .PHONY: all clean info

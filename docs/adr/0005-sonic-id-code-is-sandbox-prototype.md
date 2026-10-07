@@ -4,9 +4,6 @@ project: yadiggg
 status: accepted
 type: architecture_decision
 tags: [yadiggg, adr, sonic-id, prototype]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[hardware/yadiggg_sonic_id_and_olaf_port]]"
 ---
 
 # ADR-0005: Sonic ID Code Is a Sandbox Prototype

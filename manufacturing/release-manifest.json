@@ -1,0 +1,116 @@
+{
+  "manifest_version": 1,
+  "product": "yadiggg",
+  "release_state": "engineering-review-only",
+  "production_release_eligible": false,
+  "engineering_review_artifacts": [
+    {
+      "path": "manufacturing/handoff.md",
+      "status": "review-instructions"
+    },
+    {
+      "path": "docs/project-state.md",
+      "status": "open-readiness-register"
+    },
+    {
+      "path": "physical-design/final-product-source-of-truth.md",
+      "status": "design-intent"
+    },
+    {
+      "path": "manufacturing/draft-bom.csv",
+      "status": "unverified-candidates"
+    },
+    {
+      "path": "physical-design/cad/yadiggg_v1_block_model.scad",
+      "status": "provisional-block-model"
+    },
+    {
+      "path": "hardware/yadiggg.kicad_pro",
+      "status": "scaffold"
+    },
+    {
+      "path": "hardware/yadiggg.kicad_sch",
+      "status": "incomplete-schematic-scaffold"
+    },
+    {
+      "path": "hardware/yadiggg.kicad_pcb",
+      "status": "incomplete-board-scaffold"
+    },
+    {
+      "path": "src/sonic_id/Makefile",
+      "status": "prototype-build-definition"
+    },
+    {
+      "path": "src/sonic_id/yadiggg_capture.c",
+      "status": "experimental-source"
+    },
+    {
+      "path": "src/sonic_id/olaf.c",
+      "status": "experimental-source"
+    },
+    {
+      "path": "yocto-meta/meta-yadiggg/recipes-apps/yadiggg-capture/yadiggg-capture_1.0.bb",
+      "status": "unverified-recipe"
+    },
+    {
+      "path": "assets/product/yadiggg-studio-hero.png",
+      "status": "concept-art"
+    }
+  ],
+  "required_production_evidence": [
+    {
+      "id": "electrical-schematic-erc",
+      "required_role": "electrical design engineer and independent reviewer",
+      "status": "missing",
+      "artifacts": []
+    },
+    {
+      "id": "pcb-layout-drc-fabricator-review",
+      "required_role": "PCB layout engineer and fabricator",
+      "status": "missing",
+      "artifacts": []
+    },
+    {
+      "id": "mechanical-geometry-fit-materials-tolerances",
+      "required_role": "mechanical design engineer and prototype reviewer",
+      "status": "missing",
+      "artifacts": []
+    },
+    {
+      "id": "approved-bom-and-substitutions",
+      "required_role": "electrical/BOM engineer and sourcing reviewer",
+      "status": "missing",
+      "artifacts": []
+    },
+    {
+      "id": "fabrication-and-assembly-outputs",
+      "required_role": "electrical/PCB engineer, mechanical engineer, and contract manufacturer",
+      "status": "missing",
+      "artifacts": []
+    },
+    {
+      "id": "firmware-programming-and-recovery",
+      "required_role": "embedded software engineer and manufacturing test engineer",
+      "status": "missing",
+      "artifacts": []
+    },
+    {
+      "id": "fixture-functional-test-and-calibration",
+      "required_role": "test/validation engineer and manufacturing engineer",
+      "status": "missing",
+      "artifacts": []
+    },
+    {
+      "id": "packaging-marking-and-traceability",
+      "required_role": "product/packaging engineer and quality representative",
+      "status": "missing",
+      "artifacts": []
+    },
+    {
+      "id": "safety-regulatory-assessment-and-approvals",
+      "required_role": "product safety/regulatory specialist and responsible engineering approver",
+      "status": "missing",
+      "artifacts": []
+    }
+  ]
+}

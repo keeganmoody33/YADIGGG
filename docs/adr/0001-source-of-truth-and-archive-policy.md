@@ -4,9 +4,6 @@ project: yadiggg
 status: accepted
 type: architecture_decision
 tags: [yadiggg, adr, source-of-truth, obsidian]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[yadiggg_vault_overview]]"
 ---
 
 # ADR-0001: Source of Truth and Archive Policy

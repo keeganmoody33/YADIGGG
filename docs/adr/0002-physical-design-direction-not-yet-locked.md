@@ -4,10 +4,6 @@ project: yadiggg
 status: accepted
 type: architecture_decision
 tags: [yadiggg, adr, physical-design, industrial-design]
-backlinks:
-  - "[[CONTEXT]]"
-  - "[[yadiggg_renderings_and_use_cases]]"
-  - "[[yadiggg_brand_identity_and_design_guidelines]]"
 ---
 
 # ADR-0002: Physical Design Direction Is Not Yet Locked
