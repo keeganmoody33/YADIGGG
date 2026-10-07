@@ -60,11 +60,11 @@ The physical **yadiggg** board is designed around a single, high-density 4-layer
 Our exhaustive technical audit identified four high-risk electrical and mechanical gaps. This section outlines provisional engineering resolutions that must be reconciled against BOM-current, physical placement, datasheets, and real schematic capture before the board can be considered production-ready.
 
 ### 2.1 The DAC/ADC Audio Input Resolution
-*   **The Original Mismatch**: The *Sonic ID Spec* erroneously stated that the playback DAC (ESS ES9218PC) would be "configured in Line-In mode" to record audio from the 3.5mm aux port for acoustic fingerprinting. 
+*   **The Original Mismatch**: The *Sonic ID Spec* erroneously stated that the playback DAC (ESS ES9218PC) would be "configured in Line-In mode" to record audio from the 3.5mm aux port for acoustic fingerprinting.
 *   **The Engineering Reality**: A Digital-to-Analog Converter (DAC) is physically a one-way street; it lacks the circuitry (sample-and-hold, comparator, quantizer) required for Analog-to-Digital conversion.
-*   **The Resolution**: 
+*   **The Resolution**:
     1.  **Strict Jack Isolation**: The 3.5mm Auxiliary Port is declared as **Output-Only (Stereo Audio Playback)**. It is driven exclusively by the high-performance **ESS ES9218PC Hi-Res DAC** with integrated headphone amplifier to provide low-noise, crystal-clear, zero-latency 30-second wishlist previews.
-    2.  **Digital Microphone Recording**: Acoustic capture for Sonic ID is performed **exclusively** through the dual built-in **Knowles MEMS Microphones**. 
+    2.  **Digital Microphone Recording**: Acoustic capture for Sonic ID is performed **exclusively** through the dual built-in **Knowles MEMS Microphones**.
     3.  **Direct PDM Routing**: Instead of using an external ADC chip, we select **Digital PDM MEMS Microphones** (Knowles SPM0404UD5). PDM (Pulse Density Modulation) microphones output a high-frequency, 1-bit digital stream. This stream is routed **directly to the native PDM hardware interface on the NXP i.MX 8M Nano SoC**. The SoC's internal PDM interface uses hardware decimation filters to convert the digital stream into 16-bit, 44.1kHz PCM audio for the OLAF/Chromaprint-lite engine. This completely bypasses the need for an external ADC, reduces component count, minimizes space, and eliminates analog noise routing.
 
 ### 2.2 The Murata 1DX Antenna Resolution
